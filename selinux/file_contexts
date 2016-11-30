@@ -1,0 +1,65 @@
+#oem specific
+
+/dev/i2c_smartpa*                               u:object_r:smartpa_device:s0
+
+#Goodix FP
+/dev/gf66xx-spi     u:object_r:gx_fpd_device:s0
+/dev/ttyACM[0-9]*   u:object_r:gx_fpd_device:s0
+/dev/goodix_fp*     u:object_r:gx_fpd_device:s0
+
+#/system/bin/fingerprintd u:object_r:fingerprintd_exec:s0
+/system/bin/gx_fpd       u:object_r:gx_fpd_exec:s0
+
+#/data/system/users/[0-9]+/fpdata(/.*)? u:object_r:fingerprintd_data_file:s0
+
+# Goodix Fingerprint data
+/data/system/fingerprint(/.*)?    u:object_r:gx_fpd_data_file:s0
+/persist/data/gxfp(/.*)?          u:object_r:gx_fpd_data_file:s0
+
+# Goodix Fingerprint libs
+#fingerprint camera key and modify te file by zhangbin 20160116 begin
+/system/lib/libfpservice.so       u:object_r:gx_fpd_lib_file:s0
+/system/lib/libfpalgorithm.so     u:object_r:gx_fpd_lib_file:s0
+/system/lib/libfphal.so           u:object_r:gx_fpd_lib_file:s0
+/system/lib/libfpnav.so           u:object_r:gx_fpd_lib_file:s0
+/system/lib64/libfpservice.so     u:object_r:gx_fpd_lib_file:s0
+/system/lib64/libfpalgorithm.so   u:object_r:gx_fpd_lib_file:s0
+/system/lib64/libfphal.so         u:object_r:gx_fpd_lib_file:s0
+/system/lib64/libfpnav.so         u:object_r:gx_fpd_lib_file:s0
+
+#Oem partitions
+/dev/block/platform/soc.0/7824900.sdhci/by-name/OEMCONFIG         u:object_r:oem_partition:s0
+/dev/block/platform/soc.0/7824900.sdhci/by-name/oeminfo           u:object_r:oem_partition:s0
+/dev/block/platform/soc.0/7824900.sdhci/by-name/factory           u:object_r:oem_partition:s0
+/dev/block/platform/soc.0/7824900.sdhci/by-name/bootconfig        u:object_r:oem_partition:s0
+/dev/block/platform/soc.0/7824900.sdhci/by-name/rootconfig        u:object_r:oem_partition:s0
+/dev/block/platform/soc.0/7824900.sdhci/by-name/recoveryconfig    u:object_r:oem_partition:s0
+/dev/block/platform/soc.0/7824900.sdhci/by-name/letvconfig        u:object_r:oem_partition:s0
+/dev/block/platform/soc.0/7824900.sdhci/by-name/letveui           u:object_r:oem_partition:s0
+/dev/block/platform/soc.0/7824900.sdhci/by-name/letvsecure        u:object_r:oem_partition:s0
+/dev/block/platform/soc.0/7824900.sdhci/by-name/letvreserve       u:object_r:oem_partition:s0
+/dev/block/platform/soc.0/7824900.sdhci/by-name/kernellog         u:object_r:oem_partition:s0
+
+#alipay deamon
+/system/bin/alipayd       u:object_r:alipay_exec:s0
+
+#Fingerprint Cmd
+/system/bin/gx_fpcmd       u:object_r:gx_fpcmd_exec:s0
+
+/sys/tp_calibration/calibration    u:object_r:sysfs_tp_calibration:s0
+
+# IR control init
+/sys/remote/enable u:object_r:sysfs_ir_enable:s0
+/dev/ttyHS1 u:object_r:ir_serial_device:s0
+/dev/ttyHSL1 u:object_r:ir_serial_device:s0
+
+#add fido daemon
+/system/vendor/bin/fidoca u:object_r:fidoca_exec:s0
+
+#/dev/block/sdf9 for phonecontrol securitydisk
+/dev/block/mmcblk0p34    u:object_r:frp_block_device:s0
+/dev/block/mmcblk0p33    u:object_r:frp_block_device:s0
+/dev/block/mmcblk0p29    u:object_r:frp_block_device:s0
+
+#add by luxi
+/dev/socket/sdcard u:object_r:vold_socket:s0
